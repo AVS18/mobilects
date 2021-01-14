@@ -1,0 +1,26 @@
+{%extends "home.html"%}
+{%block content%}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">sid</th>
+        <th scope="col">name</th>
+        <th scope="col">semester</th>
+        <th scope="col">branch</th>
+        <th scope='col'><b>Action</b></th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for item in obj%}
+      <tr>
+        <th scope="row">{{item.sid}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.semester}}</td>
+        <td>{{item.branch}}</td>
+        <td><a href="/updateStudent/{{item.sid}}" class="btn btn-success">Edit</a></td>
+        <td><a href="/deleteStudent/{{item.sid}}" class="btn btn-danger">Delete</a></td>
+      </tr>
+      {%endfor%}
+    </tbody>
+</table>
+{%endblock%}

@@ -1,0 +1,52 @@
+{%extends "home.html"%}
+{%block content%}
+<center><h4>Enter Student Information</h4></center>
+{%if updated %}
+<form action="/updateStudent/{{obj.sid}}" method="POST">
+{%else%}
+<form action="/addStudent" method="POST">
+{%endif%}
+    {%csrf_token%}
+    <div class="row form-group">
+        <div class="col-sm-2">
+            <label for="Sid">sid</label>
+        </div>
+        <div class="col-sm-10">
+            <input type="number" value="{{obj.sid}}" class="form-control" id="Sid" name="sid" required>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-2">
+            <label for="name">Name</label>
+        </div>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" value="{{obj.name}}" id="name" name="name" required>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-2">
+            <label for="semester">Semester</label>
+        </div>
+        <div class="col-sm-10">
+            <input type="number" value="{{obj.semester}}" class="form-control" id="semester" name="semester" required>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-sm-2">
+            <label for="branch">Branch</label>
+        </div>
+        <div class="col-sm-10">
+            <input type="text" value="{{obj.branch}}" class="form-control" id="branch" name="branch" required>
+        </div>
+    </div>
+            <center>
+            <input type="submit" value="Submit" class="btn btn-success" >
+            <a href="/" class="btn btn-danger">Cancel</a><br><br>
+            {% if updated %}
+            <p>This is the Update Student Page Layout</p>
+            {%else%}
+            <p>This is the Add Student Page Layout</p>
+            {%endif%}
+            </center>
+</form>
+{%endblock%}
